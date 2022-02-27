@@ -1,47 +1,55 @@
-document.getElementById('dipositBtn').addEventListener('click', function () {
-    const fieldMoney = document.getElementById('diposit');
+
+function getPreviousMoney() {
+    const balance = document.getElementById('balance');
+    const previousBalanceText = balance.innerText;
+    const previousBalance = parseFloat(previousBalanceText);
+    return previousBalance;
+}
+function btnFunction(btnName) {
+    const fieldMoney = document.getElementById(btnName);
     const currentMoneyText = fieldMoney.value;
     const currentMoney = parseFloat(currentMoneyText);
-
-    const addMoney = document.getElementById('addDiposit');
+    fieldMoney.value = "";
+    return currentMoney;
+}
+function textFunction(textName, currentMoney) {
+    const addMoney = document.getElementById(textName);
     const previousMoneyText = addMoney.innerText;
 
     const previousMoney = parseFloat(previousMoneyText);
 
     const totalMoney = previousMoney + currentMoney;
     addMoney.innerText = totalMoney;
-    fieldMoney.value = "";
-    // console.log(totalMoney);
-
+}
+function updateBlance(currentMoney, addvalue) {
     const balance = document.getElementById('balance');
-    const previousBalanceText = balance.innerText;
-    const previousBalance = parseFloat(previousBalanceText);
-    const totalBalance = previousBalance + currentMoney;
-    balance.innerText = totalBalance;
+    const previousBalance = getPreviousMoney();
+    if (addvalue == true) {
+        const totalBalance = previousBalance + currentMoney;
+        balance.innerText = totalBalance;
+    }
+    else {
+        const totalBalance = previousBalance - currentMoney;
+        balance.innerText = totalBalance;
+    }
+}
+document.getElementById('dipositBtn').addEventListener('click', function () {
 
+    const currentMoney = btnFunction('diposit');
+    if (currentMoney > 0) {
+        updateBlance(currentMoney, addvalue = true)
+        textFunction('addDiposit', currentMoney);
+    }
 
 });
 document.getElementById('withdrawBtn').addEventListener('click', function () {
-    const withrawfieldMoney = document.getElementById('withdraw');
-    const currentWithdrawMoneyText = withrawfieldMoney.value;
-    const currentWithdrawMoney = parseFloat(currentWithdrawMoneyText);
 
-    const addWithdrawMoney = document.getElementById('addWithdraw');
-    const previousWithdrawMoneyText = addWithdrawMoney.innerText;
-
-    const previousWithdrawMoney = parseFloat(previousWithdrawMoneyText);
-
-    const totalWithdrawMoney = previousWithdrawMoney + currentWithdrawMoney;
-    addWithdrawMoney.innerText = totalWithdrawMoney;
-    withrawfieldMoney.value = "";
-    // console.log(totalMoney);
-
-    const withdrawBalance = document.getElementById('balance');
-    const previousWithdrawBalanceText = withdrawBalance.innerText;
-    const previousBalance = parseFloat(previousWithdrawBalanceText);
-    const totalBalanceBalance = previousBalance - currentWithdrawMoney;
-    balance.innerText = totalBalanceBalance;
-
+    const currentMoney = btnFunction('withdraw');
+    const previousBalance = getPreviousMoney();
+    if (currentMoney > 0 && currentMoney < previousBalance) {
+        textFunction('addWithdraw', currentMoney);
+        updateBlance(currentMoney, addvalue = false)
+    }
 
 });
 
