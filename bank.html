@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <header class="mt-16">
+            <h1 class="text-4xl text-center font-semibold">Welcome My banking <span class="text-green-600">System</span> !!</h1>
+           </header>
+    </section>
+    <section class="">
+    <div>
+    <div class="grid grid-cols-3 gap-5 w-3/4 mx-auto mt-5">
+      <div class="bg-indigo-500 px-20 py-8 rounded-lg">
+       <h1  class="text-2xl">Diposit</h1>
+       <h1  class="text-4xl mt-3">$<span id="addDiposit" >00</span> </h1>
+      </div>
+      <div class="bg-lime-500 px-20 py-8 rounded-lg">
+       <h1 id="" class="text-2xl">Withdraw</h1>
+       <h1 class="text-4xl mt-3">$<span id="addWithdraw">00</span></h1>
+      </div>
+      <div class="bg-green-300 px-20 py-8 rounded-lg">
+       <h1 class="text-2xl">Balance</h1>
+       <h1 class="text-4xl mt-3">$<span id="balance">1200</span> </h1>
+      </div>
+     
+  
+  </div>
+    </div>
+    </section>
+    <section>
+    <div class="grid grid-cols-2 gap-5 w-3/4 mx-auto mt-5 bg-slate-300 py-10 px-10 rounded-lg">
+      <div>
+        <label for="">Diposit</label>
+        <input type="text" id="diposit" class="block w-full mb-5 mt-4 p-2 rounded-lg" required>
+        <button id="dipositBtn" class="bg-indigo-500 py-2 px-4 text-white text-lg font-medium rounded-lg">Add</button>
+      </div>
+      <div>
+        <label for="">withdraw</label>
+        <input type="text" id="withdraw" class="block w-full mb-5 mt-4 p-2 rounded-lg" required>
+        <button id="withdrawBtn" class="bg-lime-500 py-2 px-4 text-white text-lg font-medium rounded-lg">Add</button>
+      </div>
+    </div>
+    </section>
+    <script src="js/bank.js"></script>
+</body>
+</html>
